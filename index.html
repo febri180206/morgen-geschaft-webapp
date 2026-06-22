@@ -294,11 +294,12 @@
   }
 
   function bukaMenu(target) {
+    const botUsername = "MorgenGeschaftBot"; // tanpa @
+    const url = `https://t.me/${botUsername}?start=${target}`;
     if (tg) {
-      // Kirim data balik ke bot, bot akan proses dan tampilkan menu yang sesuai
-      tg.sendData(JSON.stringify({ action: target }));
+      tg.openTelegramLink(url);
     } else {
-      alert("Buka dari dalam Telegram untuk navigasi menu.");
+      window.open(url, "_blank");
     }
   }
 
