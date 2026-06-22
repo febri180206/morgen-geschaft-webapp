@@ -383,7 +383,9 @@
     }
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/user-data?user_id=${userId}`);
+      const res = await fetch(`${API_BASE_URL}/api/user-data?user_id=${userId}`, {
+        headers: { "ngrok-skip-browser-warning": "true" }
+      });
       if (!res.ok) throw new Error("Gagal memuat data");
       const data = await res.json();
       renderCart(data.keranjang || [], data.total_keranjang || 0);
